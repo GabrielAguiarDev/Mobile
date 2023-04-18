@@ -129,6 +129,7 @@ function TabNavigation() {
   const { state } = useContext(Context)
   return (
     <Tab.Navigator
+      initialRouteName="home"
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {

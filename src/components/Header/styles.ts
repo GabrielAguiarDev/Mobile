@@ -19,11 +19,11 @@ export const Profile = styled.View`
   width: 45px;
   height: 45px;
   border-radius: 60px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.BACKGROUND_ICON};
   border: 1px solid ${(props) => props.theme.colors.PRIMARY_COLOR};
 `
 
-export const Name = styled.Text`
+export const Page = styled.Text`
   font-weight: bold;
   font-size: ${RFValue(15)}px;
 `
@@ -34,7 +34,7 @@ export const contentIcon = styled.Pressable`
   width: 40px;
   height: 50px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.BACKGROUND_ICON};
 `
 export const ContentSecond = styled.View`
   position: relative;

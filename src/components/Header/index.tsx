@@ -1,10 +1,16 @@
+// Libs
 import { useNavigation } from "@react-navigation/native"
 import { useTheme } from "styled-components"
-import * as S from "./styles"
 import { SimpleLineIcons, Ionicons } from "@expo/vector-icons"
+
+// Typing
+import { IPage } from "../../types/Interfaces"
 import { propsStack } from "../../routes/Stack/Models"
 
-export default function Header() {
+// Style
+import * as S from "./styles"
+
+export default function Header({ page }: IPage) {
   const navigation = useNavigation<propsStack>()
   const { colors } = useTheme()
   return (
@@ -13,7 +19,7 @@ export default function Header() {
         <S.Profile>
           <Ionicons name="person" size={20} color={colors.PRIMARY_COLOR} />
         </S.Profile>
-        <S.Name>Primeiro Nome</S.Name>
+        <S.Page>{page}</S.Page>
       </S.ProfileContent>
       <S.contentIcon
         onPress={() => navigation.navigate("Friends")}

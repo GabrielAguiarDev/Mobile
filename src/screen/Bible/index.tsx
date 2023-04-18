@@ -1,9 +1,12 @@
+import { Content } from "../../../styles"
 import * as S from "../../../styles/Bible"
+import { Header } from "../../components"
 
 export default function Bible() {
   return (
-    <S.Content>
+    <Content>
+      <Header page="Bíblia" />
       <S.Title>Bible</S.Title>
-    </S.Content>
+    </Content>
   )
 }

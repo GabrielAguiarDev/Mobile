@@ -1,11 +1,16 @@
+// Libs
 import { useNavigation } from "@react-navigation/native"
 import { MaterialIcons } from "@expo/vector-icons"
-import { propsStack } from "../../routes/Stack/Models"
 
+// Typing
+import { propsStack } from "../../routes/Stack/Models"
+import { IPage } from "../../types/Interfaces"
+
+// Style
 import * as S from "./styles"
 import { TitlePage } from "../../../styles"
 
-export default function HeaderSecond({ page }) {
+export default function HeaderSecond({ page }: IPage) {
   const navigation = useNavigation<propsStack>()
   return (
     <S.ContentSecond>
