@@ -6,6 +6,7 @@ export type propsNavigationStack = {
   Login: undefined
   Profile: undefined
   Register: undefined
+  Friends: undefined
 }
 
 export type propsStack = NativeStackNavigationProp<propsNavigationStack>

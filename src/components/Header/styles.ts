@@ -20,7 +20,7 @@ export const Profile = styled.View`
   height: 45px;
   border-radius: 60px;
   background-color: #fff;
-  border: 2px solid ${(props) => props.theme.colors.PRIMARY_COLOR};
+  border: 1px solid ${(props) => props.theme.colors.PRIMARY_COLOR};
 `
 
 export const Name = styled.Text`
@@ -35,4 +35,20 @@ export const contentIcon = styled.Pressable`
   height: 50px;
   border-radius: 8px;
   background-color: #fff;
+`
+export const ContentSecond = styled.View`
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+`
+
+export const Back = styled.Pressable`
+  position: absolute;
+  left: 20px;
+  width: 50px;
+  height: 40px;
+  justify-content: center;
+  padding-left: 10px;
 `

@@ -18,6 +18,8 @@ import Register from "../../screen/Register"
 import Home from "../../screen/Home"
 import Prayers from "../../screen/Prayers"
 import Bible from "../../screen/Bible"
+import Friends from "../../screen/Friends"
+import Profile from "../../screen/Profile"
 
 // Style
 import { darkTheme, lightTheme } from "../../../styles/theme"
@@ -128,7 +130,6 @@ function TabNavigation() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: "red",
         tabBarShowLabel: false,
         tabBarStyle: {
           display: state.modal ? "none" : "flex",
@@ -216,9 +217,10 @@ export default function Stack() {
         {state.isLogged && (
           <>
             <Screen name="Home" component={TabNavigation} />
-            <Screen name="Profile" component={TabNavigation} />
+            <Screen name="Profile" component={Profile} />
             <Screen name="Login" component={TabNavigation} />
             <Screen name="Register" component={TabNavigation} />
+            <Screen name="Friends" component={Friends} />
           </>
         )}
       </Navigator>

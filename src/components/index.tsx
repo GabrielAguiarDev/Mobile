@@ -1,3 +1,4 @@
 import Header from "./Header"
+import HeaderSecond from "./Header/second"
 
-export { Header }
+export { Header, HeaderSecond }
