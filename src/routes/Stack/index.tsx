@@ -3,7 +3,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { useContext, useRef, useEffect } from "react"
 import { ThemeProvider, useTheme } from "styled-components"
-import { Ionicons, MaterialIcons } from "@expo/vector-icons"
+import {
+  Ionicons,
+  MaterialIcons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons"
 import * as Animatable from "react-native-animatable"
 import { StyleSheet } from "react-native"
 
@@ -12,7 +16,7 @@ import isLogged from "../../screen/AuthLoadingScreen"
 import Login from "../../screen/Login"
 import Register from "../../screen/Register"
 import Home from "../../screen/Home"
-import Targets from "../../screen/Targets"
+import Prayers from "../../screen/Prayers"
 import Bible from "../../screen/Bible"
 
 // Style
@@ -74,8 +78,13 @@ function TabButton(props) {
             ref={circleRef}
             style={{
               ...StyleSheet.absoluteFillObject,
-              backgroundColor: colors.SECONDARY_COLOR,
-              borderRadius: 25,
+              backgroundColor: colors.TAB_NAVIGATOR,
+              borderTopColor: colors.PRIMARY_COLOR,
+              borderLeftColor: colors.PRIMARY_COLOR,
+              borderRightColor: colors.PRIMARY_COLOR,
+              borderBottomColor: colors.TAB_NAVIGATOR,
+              borderWidth: 1,
+              borderRadius: 20,
             }}
             duration={300}
           />
@@ -83,14 +92,17 @@ function TabButton(props) {
             <Ionicons
               name={focused ? name : `${name}-outline`}
               size={20}
-              color={focused ? colors.PRIMARY_COLOR : colors.SECONDARY_COLOR}
+              color={colors.PRIMARY_COLOR}
             />
           )}
           {IconType === "MaterialIcons" && (
-            <MaterialIcons
+            <MaterialIcons name={name} size={20} color={colors.PRIMARY_COLOR} />
+          )}
+          {IconType === "MaterialCommunityIcons" && (
+            <MaterialCommunityIcons
               name={name}
               size={20}
-              color={focused ? colors.PRIMARY_COLOR : colors.SECONDARY_COLOR}
+              color={colors.PRIMARY_COLOR}
             />
           )}
         </Button>
@@ -100,7 +112,7 @@ function TabButton(props) {
           style={{
             fontSize: 10,
             textAlign: "center",
-            color: colors.SECONDARY_COLOR,
+            color: colors.PRIMARY_COLOR,
           }}
         >
           {label}
@@ -121,10 +133,18 @@ function TabNavigation() {
         tabBarStyle: {
           display: state.modal ? "none" : "flex",
           position: "absolute",
-          backgroundColor: colors.PRIMARY_COLOR,
+          backgroundColor: colors.TAB_NAVIGATOR,
           borderTopWidth: 0,
           height: 60,
           zIndex: 2,
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 12,
+          },
+          shadowOpacity: 0.58,
+          shadowRadius: 16.0,
+          elevation: 24,
         },
       }}
     >
@@ -137,9 +157,9 @@ function TabNavigation() {
           tabBarButton: (props) => (
             <TabButton
               {...props}
-              name="bible"
+              name="menu-book"
               label="Bíblia"
-              IconType="Ionicons"
+              IconType="MaterialIcons"
             />
           ),
         }}
@@ -161,17 +181,17 @@ function TabNavigation() {
         }}
       />
       <Tab.Screen
-        name="targets"
-        component={Targets}
+        name="prayers"
+        component={Prayers}
         options={{
           headerShown: false,
           tabBarLabel: "Orações",
           tabBarButton: (props) => (
             <TabButton
               {...props}
-              name="targets"
+              name="hands-pray"
               label="Orações"
-              IconType="Ionicons"
+              IconType="MaterialCommunityIcons"
             />
           ),
         }}
