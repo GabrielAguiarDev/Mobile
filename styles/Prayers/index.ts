@@ -1,5 +1,5 @@
 import styled from "styled-components/native"
-import { Dimensions } from "react-native"
+import { RFValue } from "react-native-responsive-fontsize"
 
 interface IPrayerPrivate {
   prayer: boolean
@@ -30,33 +30,31 @@ export const ButtonContent = styled.Pressable`
   right: 30px;
   justify-content: center;
   align-items: center;
-  width: 65px;
-  height: 65px;
   border-radius: 60px;
   background-color: ${(props) => props.theme.colors.PRIMARY_COLOR};
 `
 
 export const ContentModal = styled.View`
-  position: absolute;
-  width: ${Dimensions.get("window").width}px;
-  height: ${Dimensions.get("window").height}px;
   flex: 1;
-  z-index: 3;
-  background-color: ${(props) => props.theme.colors.BACKGROUND};
-  justify-content: center;
-  align-items: center;
+  position: relative;
 `
 
-export const ContentTest = styled.Pressable`
-  height: 50px;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: ${(props) => props.theme.colors.PRIMARY_COLOR};
-  border-radius: 8px;
+export const Modal = styled.View`
+  position: relative;
+  flex: 1;
 `
-export const Test = styled.Text`
-  color: #fff;
-  font-size: 19px;
+
+export const TitleModal = styled.View`
+  position: absolute;
+  top: 15px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+`
+
+export const Title = styled.Text`
   font-weight: bold;
+  font-size: ${RFValue(17)}px;
 `

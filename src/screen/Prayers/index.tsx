@@ -1,54 +1,97 @@
 import { useState } from "react"
+import { Pressable, Text, Dimensions } from "react-native"
 import InsetShadow from "react-native-inset-shadow"
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+} from "react-native-reanimated"
 
 import { Header } from "../../components"
 import { useTheme } from "styled-components"
-import { MaterialCommunityIcons } from "@expo/vector-icons"
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons"
 
 import * as S from "../../../styles/Prayers"
 import { StyleSheet } from "react-native"
 import { Content } from "../../../styles"
 
-interface IButton {
-  setOpen: (data: boolean) => void
-}
-
-function ButtonToggle({ setOpen }: IButton) {
+function ButtonToggle() {
+  const [toggle, setToggle] = useState(false)
   const { colors } = useTheme()
+  const Width = useSharedValue(60)
+  const Height = useSharedValue(60)
+  const Right = useSharedValue(30)
+  const borderBottomRightRadius = useSharedValue(60)
+  const borderRadius = useSharedValue(60)
+  const Background = useSharedValue(colors.PRIMARY_COLOR)
+
+  const openModal = () => {
+    setToggle(true)
+    Width.value = withSpring(355, {
+      velocity: 0,
+    })
+    Height.value = withSpring(480, { velocity: 0 })
+    Right.value = withTiming(20, { duration: 100 })
+    borderBottomRightRadius.value = withTiming(150, { duration: 200 })
+    borderRadius.value = withTiming(30, { duration: 200 })
+    Background.value = withTiming(colors.TAB_NAVIGATOR, { duration: 500 })
+  }
+
+  const closeModal = () => {
+    setToggle(false)
+    Width.value = withTiming(0, { duration: 200 })
+    Height.value = withTiming(0, { duration: 200 })
+    Right.value = withTiming(30, { duration: 0 })
+    borderBottomRightRadius.value = withTiming(60, { duration: 200 })
+    borderRadius.value = withTiming(20, { duration: 200 })
+    Background.value = withTiming(colors.PRIMARY_COLOR, { duration: 500 })
+  }
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    width: Width.value,
+    height: Height.value,
+    right: Right.value,
+    borderRadius: borderRadius.value,
+    borderBottomRightRadius: borderBottomRightRadius.value,
+    backgroundColor: Background.value,
+  }))
 
   return (
-    <S.ButtonContent
-      onPress={() => setOpen(true)}
-      style={{
-        elevation: 10,
-        shadowColor: "#000000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 3,
-      }}
-    >
-      <MaterialCommunityIcons
-        name="hands-pray"
-        size={30}
-        color={colors.BACKGROUND_ICON}
-      />
-    </S.ButtonContent>
-  )
-}
-
-function ModalPrayer({ setOpen }: IButton) {
-  return (
-    <S.ContentModal>
-      <S.ContentTest onPress={() => setOpen(false)}>
-        <S.Test>Fechar Modal</S.Test>
-      </S.ContentTest>
-    </S.ContentModal>
+    <>
+      <Pressable style={style.Button} onPress={toggle ? closeModal : openModal}>
+        <Animated.View>
+          {toggle ? (
+            <Ionicons name="close" size={30} color={colors.BACKGROUND_ICON} />
+          ) : (
+            <MaterialCommunityIcons
+              name="hands-pray"
+              size={30}
+              color={colors.BACKGROUND_ICON}
+            />
+          )}
+        </Animated.View>
+      </Pressable>
+      <Animated.View style={[style.Modal, animatedStyle]}>
+        {toggle && (
+          <S.Modal>
+            <S.TitleModal>
+              <S.Title>Tipos de orações</S.Title>
+              <MaterialCommunityIcons
+                name="hands-pray"
+                size={30}
+                color={colors.PRIMARY_COLOR}
+              />
+            </S.TitleModal>
+          </S.Modal>
+        )}
+      </Animated.View>
+    </>
   )
 }
 
 export default function Targets() {
   const [prayersPrivate, setPrayersPrivate] = useState(false)
-  const [openModal, setOpenModal] = useState(false)
 
   return (
     <Content>
@@ -81,8 +124,9 @@ export default function Targets() {
           <S.Type prayer={!prayersPrivate}>Compartilhado</S.Type>
         </S.Prayers>
       </InsetShadow>
-      <ButtonToggle setOpen={setOpenModal} />
-      {openModal && <ModalPrayer setOpen={setOpenModal} />}
+      <S.ContentModal>
+        <ButtonToggle />
+      </S.ContentModal>
     </Content>
   )
 }
@@ -98,5 +142,35 @@ const style = StyleSheet.create({
     marginVertical: 20,
     padding: 5,
     borderRadius: 8,
+  },
+  Button: {
+    position: "absolute",
+    bottom: 120,
+    right: 30,
+    width: 60,
+    height: 60,
+    zIndex: 3,
+    backgroundColor: "#031646",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 60,
+    elevation: 10,
+    shadowColor: "#000000a4",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+  },
+  Modal: {
+    position: "absolute",
+    bottom: 120,
+    width: 0,
+    height: 0,
+    zIndex: -1,
+    justifyContent: "center",
+    elevation: 10,
+    shadowColor: "#000000a4",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
   },
 })
