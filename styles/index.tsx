@@ -1,4 +1,5 @@
 import styled from "styled-components/native"
+import { RFValue } from "react-native-responsive-fontsize"
 
 export const Content = styled.View`
   position: relative;
@@ -8,7 +9,7 @@ export const Content = styled.View`
 `
 
 export const TitlePage = styled.Text`
-  font-size: 18px;
+  font-size: ${RFValue(15)}px;
   font-family: serif;
   color: #555555;
 `

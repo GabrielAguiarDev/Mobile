@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Pressable, Text, Dimensions } from "react-native"
+import { Pressable } from "react-native"
 import InsetShadow from "react-native-inset-shadow"
 import Animated, {
   useSharedValue,
@@ -28,11 +28,9 @@ function ButtonToggle() {
 
   const openModal = () => {
     setToggle(true)
-    Width.value = withSpring(355, {
-      velocity: 0,
-    })
-    Height.value = withSpring(480, { velocity: 0 })
-    Right.value = withTiming(20, { duration: 100 })
+    Width.value = withTiming(363, { duration: 300 })
+    Height.value = withSpring(530, { velocity: 0 })
+    Right.value = withTiming(15, { duration: 100 })
     borderBottomRightRadius.value = withTiming(150, { duration: 200 })
     borderRadius.value = withTiming(30, { duration: 200 })
     Background.value = withTiming(colors.TAB_NAVIGATOR, { duration: 500 })
@@ -43,8 +41,8 @@ function ButtonToggle() {
     Width.value = withTiming(0, { duration: 200 })
     Height.value = withTiming(0, { duration: 200 })
     Right.value = withTiming(30, { duration: 0 })
-    borderBottomRightRadius.value = withTiming(60, { duration: 200 })
-    borderRadius.value = withTiming(20, { duration: 200 })
+    borderBottomRightRadius.value = withTiming(20, { duration: 200 })
+    borderRadius.value = withTiming(30, { duration: 200 })
     Background.value = withTiming(colors.PRIMARY_COLOR, { duration: 500 })
   }
 
@@ -83,6 +81,107 @@ function ButtonToggle() {
                 color={colors.PRIMARY_COLOR}
               />
             </S.TitleModal>
+            <S.OptionsContent>
+              <S.Options
+                style={{
+                  elevation: 5,
+                  shadowColor: "#0000009a",
+                  shadowOffset: { width: 0, height: 1 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 5,
+                }}
+              >
+                <S.Label>Crescimento Espiritual</S.Label>
+              </S.Options>
+              <S.Options
+                style={{
+                  elevation: 5,
+                  shadowColor: "#0000009a",
+                  shadowOffset: { width: 0, height: 1 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 5,
+                }}
+              >
+                <S.Label>Relacionamentos</S.Label>
+              </S.Options>
+              <S.Options
+                style={{
+                  elevation: 5,
+                  shadowColor: "#0000009a",
+                  shadowOffset: { width: 0, height: 1 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 5,
+                }}
+              >
+                <S.Label>Cura</S.Label>
+              </S.Options>
+              <S.Options
+                style={{
+                  elevation: 5,
+                  shadowColor: "#0000009a",
+                  shadowOffset: { width: 0, height: 1 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 5,
+                }}
+              >
+                <S.Label>Família</S.Label>
+              </S.Options>
+              <S.Options
+                style={{
+                  elevation: 5,
+                  shadowColor: "#0000009a",
+                  shadowOffset: { width: 0, height: 1 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 5,
+                }}
+              >
+                <S.Label>Paz</S.Label>
+              </S.Options>
+              <S.Options
+                style={{
+                  elevation: 5,
+                  shadowColor: "#0000009a",
+                  shadowOffset: { width: 0, height: 1 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 5,
+                }}
+              >
+                <S.Label>Gratidão</S.Label>
+              </S.Options>
+              <S.Options
+                style={{
+                  elevation: 5,
+                  shadowColor: "#0000009a",
+                  shadowOffset: { width: 0, height: 1 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 5,
+                }}
+              >
+                <S.Label>Perdão</S.Label>
+              </S.Options>
+              <S.Options
+                style={{
+                  elevation: 5,
+                  shadowColor: "#0000009a",
+                  shadowOffset: { width: 0, height: 1 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 5,
+                }}
+              >
+                <S.Label>Luto</S.Label>
+              </S.Options>
+              <S.Options
+                style={{
+                  elevation: 5,
+                  shadowColor: "#0000009a",
+                  shadowOffset: { width: 0, height: 1 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 5,
+                }}
+              >
+                <S.Label>Sabedoria</S.Label>
+              </S.Options>
+            </S.OptionsContent>
           </S.Modal>
         )}
       </Animated.View>
@@ -124,6 +223,13 @@ export default function Targets() {
           <S.Type prayer={!prayersPrivate}>Compartilhado</S.Type>
         </S.Prayers>
       </InsetShadow>
+      <S.PrayersContent>
+        {prayersPrivate ? (
+          <S.TextEmpty>Sua Sala de Oração Pessoal</S.TextEmpty>
+        ) : (
+          <S.TextEmpty>Orações Compartilhadas</S.TextEmpty>
+        )}
+      </S.PrayersContent>
       <S.ContentModal>
         <ButtonToggle />
       </S.ContentModal>
@@ -136,8 +242,9 @@ const style = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
+    alignSelf: "center",
     width: "65%",
-    height: 60,
+    height: 50,
     marginHorizontal: 20,
     marginVertical: 20,
     padding: 5,
