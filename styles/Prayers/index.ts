@@ -19,6 +19,7 @@ export const Prayers = styled.Pressable<IPrayerPrivate>`
 
 export const Type = styled.Text<IPrayerPrivate>`
   font-weight: bold;
+  font-size: ${RFValue(12)}px;
   font-family: serif;
   color: ${(props) =>
     props.prayer ? props.theme.colors.PRIMARY_COLOR : "#898989"};

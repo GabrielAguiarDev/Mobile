@@ -1,4 +1,4 @@
-// Dependence
+// Modules and Hooks
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { useContext, useRef, useEffect } from "react"

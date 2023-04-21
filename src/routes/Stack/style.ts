@@ -1,5 +1,4 @@
 import styled from "styled-components/native"
-import { Dimensions } from "react-native"
 
 export const Button = styled.View`
   width: 45px;

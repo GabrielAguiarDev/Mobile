@@ -5,7 +5,19 @@ interface IActive {
   active: boolean
 }
 
-export const Title = styled.Text``
+export const ContentVerse = styled.Pressable`
+  width: 90%;
+  background-color: ${(props) => props.theme.colors.BACKGROUND_ICON};
+  align-self: center;
+  padding: 15px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+`
+
+export const Verse = styled.Text`
+  font-size: ${RFValue(16)}px;
+  font-weight: bold;
+`
 
 export const OptionMenu = styled.Pressable<IActive>`
   justify-content: center;

@@ -200,7 +200,7 @@ export default function Targets() {
           prayer={!prayersPrivate}
           onPress={() => setPrayersPrivate(true)}
           style={{
-            elevation: prayersPrivate ? 5 : 0,
+            elevation: prayersPrivate ? 3 : 0,
             shadowColor: "#000000d1",
             shadowOffset: { width: 0, height: 1 },
             shadowOpacity: 0.8,
@@ -213,7 +213,7 @@ export default function Targets() {
           prayer={!prayersPrivate}
           onPress={() => setPrayersPrivate(false)}
           style={{
-            elevation: prayersPrivate ? 0 : 5,
+            elevation: !prayersPrivate ? 3 : 0,
             shadowColor: "#000000d1",
             shadowOffset: { width: 0, height: 1 },
             shadowOpacity: 0.8,
@@ -242,7 +242,7 @@ const style = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    alignSelf: "center",
+    alignSelf: "flex-start",
     width: "65%",
     height: 50,
     marginHorizontal: 20,

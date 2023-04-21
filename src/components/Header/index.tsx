@@ -10,7 +10,7 @@ import { propsStack } from "../../routes/Stack/Models"
 // Style
 import * as S from "./styles"
 
-export default function Header({ page }: IPage) {
+export default function Header({ page, info }: IPage) {
   const navigation = useNavigation<propsStack>()
   const { colors } = useTheme()
   return (
@@ -20,6 +20,7 @@ export default function Header({ page }: IPage) {
           <Ionicons name="person" size={20} color={colors.PRIMARY_COLOR} />
         </S.Profile>
         <S.Page>{page}</S.Page>
+        {info && <S.Info>{info}</S.Info>}
       </S.ProfileContent>
       <S.contentIcon
         onPress={() => navigation.navigate("Friends")}

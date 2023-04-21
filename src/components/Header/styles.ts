@@ -28,6 +28,14 @@ export const Page = styled.Text`
   font-size: ${RFValue(15)}px;
 `
 
+export const Info = styled.Text`
+  font-size: ${RFValue(12)}px;
+  background-color: #99999949;
+  padding: 3px;
+  border-radius: 3px;
+  margin-left: -8px;
+`
+
 export const contentIcon = styled.Pressable`
   align-items: center;
   justify-content: center;
