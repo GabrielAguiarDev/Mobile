@@ -6,6 +6,7 @@ export type Theme = {
   BACKGROUND: string
   TAB_NAVIGATOR: string
   BACKGROUND_ICON: string
+  ICON_LIVE: string
 }
 
 declare module "styled-components" {

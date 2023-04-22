@@ -5,6 +5,7 @@ const darkTheme = {
     TAB_NAVIGATOR: "#f7faff",
     BACKGROUND: "#f4f8ff",
     BACKGROUND_ICON: "#f7faff",
+    ICON_LIVE: "#031646",
   },
 }
 
@@ -15,6 +16,7 @@ const lightTheme = {
     TAB_NAVIGATOR: "#f7faff",
     BACKGROUND: "#f4f8ff",
     BACKGROUND_ICON: "#f7faff",
+    ICON_LIVE: "#031646",
   },
 }
 

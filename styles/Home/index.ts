@@ -1,4 +1,3 @@
-import { Dimensions } from "react-native"
 import styled from "styled-components/native"
 
 export const Content = styled.SafeAreaView`
@@ -8,3 +7,8 @@ export const Content = styled.SafeAreaView`
   background-color: ${(props) => props.theme.colors.BACKGROUND};
 `
 export const Title = styled.Text``
+
+export const contentIcon = styled.View`
+  width: 30px;
+  height: 30px;
+`

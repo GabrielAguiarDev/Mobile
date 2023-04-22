@@ -3,13 +3,18 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { useContext, useRef, useEffect } from "react"
 import { ThemeProvider, useTheme } from "styled-components"
+import * as Animatable from "react-native-animatable"
+import { StyleSheet } from "react-native"
+
+// Icons
+import SVG from "../../../assets/svg"
+import IconLive from "../../../assets/svg/live"
+import IconDonate from "../../../assets/svg/donate"
 import {
   Ionicons,
   MaterialIcons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons"
-import * as Animatable from "react-native-animatable"
-import { StyleSheet } from "react-native"
 
 // Screen
 import isLogged from "../../screen/AuthLoadingScreen"
@@ -20,6 +25,8 @@ import Prayers from "../../screen/Prayers"
 import Bible from "../../screen/Bible"
 import Friends from "../../screen/Friends"
 import Profile from "../../screen/Profile"
+import Videos from "../../screen/Videos"
+import Donate from "../../screen/Donate"
 
 // Style
 import { darkTheme, lightTheme } from "../../../styles/theme"
@@ -57,7 +64,17 @@ function TabButton(props) {
   const viewRef = useRef(null)
   const circleRef = useRef(null)
   const textRef = useRef(null)
-  const { name, label, onPress, accessibilityState, IconType } = props
+  const {
+    name,
+    label,
+    onPress,
+    accessibilityState,
+    IconType,
+    svg,
+    color,
+    width,
+    height,
+  } = props
   const focused = accessibilityState.selected
 
   useEffect(() => {
@@ -90,6 +107,14 @@ function TabButton(props) {
             }}
             duration={300}
           />
+          {svg && (
+            <SVG
+              icon={svg}
+              color={color}
+              width={width ? width : "70%"}
+              height={height ? height : "70%"}
+            />
+          )}
           {IconType === "Ionicons" && (
             <Ionicons
               name={focused ? name : `${name}-outline`}
@@ -151,6 +176,22 @@ function TabNavigation() {
       }}
     >
       <Tab.Screen
+        name="Videos"
+        component={Videos}
+        options={{
+          headerShown: false,
+          tabBarLabel: "Videos",
+          tabBarButton: (props) => (
+            <TabButton
+              {...props}
+              svg={IconLive}
+              color={colors.ICON_LIVE}
+              label="Ao vivo"
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="bible"
         component={Bible}
         options={{
@@ -178,6 +219,24 @@ function TabNavigation() {
               name="home"
               label="Início"
               IconType="Ionicons"
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="donate"
+        component={Donate}
+        options={{
+          headerShown: false,
+          tabBarLabel: "Doações",
+          tabBarButton: (props) => (
+            <TabButton
+              {...props}
+              color={colors.ICON_LIVE}
+              svg={IconDonate}
+              width="80%"
+              height="80%"
+              label="Doações"
             />
           ),
         }}
