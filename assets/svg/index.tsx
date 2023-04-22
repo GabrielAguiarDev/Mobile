@@ -1,5 +1,4 @@
 import { SvgXml } from "react-native-svg"
-import IconLive from "./live"
 
 interface ISVG {
   icon: string

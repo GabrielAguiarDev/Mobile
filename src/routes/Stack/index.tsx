@@ -4,12 +4,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { useContext, useRef, useEffect } from "react"
 import { ThemeProvider, useTheme } from "styled-components"
 import * as Animatable from "react-native-animatable"
-import { StyleSheet } from "react-native"
+import { Image, StyleSheet } from "react-native"
 
 // Icons
 import SVG from "../../../assets/svg"
 import IconLive from "../../../assets/svg/live"
 import IconDonate from "../../../assets/svg/donate"
+import Logo from "../../../assets/svg/logo"
 import {
   Ionicons,
   MaterialIcons,
@@ -74,6 +75,7 @@ function TabButton(props) {
     color,
     width,
     height,
+    logo,
   } = props
   const focused = accessibilityState.selected
 
@@ -91,7 +93,7 @@ function TabButton(props) {
 
   return (
     <TabButtonContent onPress={onPress}>
-      <Animatable.View ref={viewRef} duration={300} style={styles.container}>
+      <Animatable.View ref={viewRef} duration={200} style={styles.container}>
         <Button>
           <Animatable.View
             ref={circleRef}
@@ -107,6 +109,12 @@ function TabButton(props) {
             }}
             duration={300}
           />
+          {logo && (
+            <Image
+              style={{ width: 33, height: 33, marginBottom: 5 }}
+              source={require("../../../assets/Images/logo_proide_2.jpg")}
+            />
+          )}
           {svg && (
             <SVG
               icon={svg}
@@ -213,14 +221,7 @@ function TabNavigation() {
         options={{
           headerShown: false,
           tabBarLabel: "home",
-          tabBarButton: (props) => (
-            <TabButton
-              {...props}
-              name="home"
-              label="Início"
-              IconType="Ionicons"
-            />
-          ),
+          tabBarButton: (props) => <TabButton {...props} label="Início" logo />,
         }}
       />
       <Tab.Screen
