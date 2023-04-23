@@ -9,6 +9,7 @@ import { propsStack } from "../../routes/Stack/Models"
 
 // Style
 import * as S from "./styles"
+import { shadow } from "../../../styles"
 
 export default function Header({ page, info }: IPage) {
   const navigation = useNavigation<propsStack>()
@@ -24,13 +25,7 @@ export default function Header({ page, info }: IPage) {
       </S.ProfileContent>
       <S.contentIcon
         onPress={() => navigation.navigate("Friends")}
-        style={{
-          elevation: 5,
-          shadowColor: "#000000b9",
-          shadowOffset: { width: 0, height: 1 },
-          shadowOpacity: 0.8,
-          shadowRadius: 4.65,
-        }}
+        style={shadow}
       >
         <SimpleLineIcons name="people" size={29} color="#000" />
       </S.contentIcon>

@@ -10,7 +10,6 @@ import { Image, StyleSheet } from "react-native"
 import SVG from "../../../assets/svg"
 import IconLive from "../../../assets/svg/live"
 import IconDonate from "../../../assets/svg/donate"
-import Logo from "../../../assets/svg/logo"
 import {
   Ionicons,
   MaterialIcons,
@@ -175,7 +174,7 @@ function TabNavigation() {
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
-            height: 12,
+            height: 0,
           },
           shadowOpacity: 0.58,
           shadowRadius: 16.0,

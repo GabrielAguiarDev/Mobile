@@ -93,3 +93,16 @@ export const TextEmpty = styled.Text`
   font-size: ${RFValue(20)}px;
   font-weight: bold;
 `
+
+export const Button = styled.Pressable`
+  position: absolute;
+  bottom: 120px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  z-index: 3;
+  background-color: ${(props) => props.theme.colors.PRIMARY_COLOR};
+  justify-content: center;
+  align-items: center;
+  border-radius: 60px;
+`

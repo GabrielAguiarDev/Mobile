@@ -3,7 +3,7 @@ import InsetShadow from "react-native-inset-shadow"
 
 import { Header } from "../../components"
 
-import { Content } from "../../../styles"
+import { Content, shadow } from "../../../styles"
 import * as S from "../../../styles/Bible"
 import { StyleSheet } from "react-native"
 import { ScrollView } from "react-native"
@@ -47,13 +47,7 @@ export default function Bible() {
         <S.OptionMenu
           active={menuActive === "old" ? true : false}
           onPress={() => setMenuActive("old")}
-          style={{
-            elevation: menuActive === "old" ? 3 : 0,
-            shadowColor: "#000000d1",
-            shadowOffset: { width: 0, height: 1 },
-            shadowOpacity: 0.8,
-            shadowRadius: 5,
-          }}
+          style={menuActive === "old" ? shadow : {}}
         >
           <S.Label active={menuActive === "old" ? true : false}>
             Antigo Testamento
@@ -62,13 +56,7 @@ export default function Bible() {
         <S.OptionMenu
           active={menuActive === "new" ? true : false}
           onPress={() => setMenuActive("new")}
-          style={{
-            elevation: menuActive === "new" ? 3 : 0,
-            shadowColor: "#000000d1",
-            shadowOffset: { width: 0, height: 1 },
-            shadowOpacity: 0.8,
-            shadowRadius: 5,
-          }}
+          style={menuActive === "new" ? shadow : {}}
         >
           <S.Label active={menuActive === "new" ? true : false}>
             Novo Testamento
@@ -83,16 +71,7 @@ export default function Bible() {
       >
         {menuActive === "new" &&
           Books.map((b, i) => (
-            <S.ContentVerse
-              key={i}
-              style={{
-                elevation: 3,
-                shadowColor: "#000000d1",
-                shadowOffset: { width: 0, height: 1 },
-                shadowOpacity: 0.8,
-                shadowRadius: 5,
-              }}
-            >
+            <S.ContentVerse key={i} style={shadow}>
               <S.Verse>{b.name}</S.Verse>
             </S.ContentVerse>
           ))}

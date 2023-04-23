@@ -13,3 +13,11 @@ export const TitlePage = styled.Text`
   font-family: serif;
   color: #555555;
 `
+
+export const shadow = {
+  elevation: 5,
+  shadowColor: "#0000009a",
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.8,
+  shadowRadius: 5,
+}
