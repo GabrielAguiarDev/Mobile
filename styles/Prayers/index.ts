@@ -92,12 +92,13 @@ export const PrayersContent = styled.View`
 export const TextEmpty = styled.Text`
   font-size: ${RFValue(20)}px;
   font-weight: bold;
+  z-index: -1;
 `
 
 export const Button = styled.Pressable`
   position: absolute;
-  bottom: 120px;
-  right: 30px;
+  bottom: 105px;
+  right: 25px;
   width: 60px;
   height: 60px;
   z-index: 3;
@@ -105,4 +106,11 @@ export const Button = styled.Pressable`
   justify-content: center;
   align-items: center;
   border-radius: 60px;
+`
+
+export const ContentScreen = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.colors.BACKGROUND};
+  justify-content: center;
+  align-items: center;
 `

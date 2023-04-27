@@ -224,6 +224,22 @@ function TabNavigation() {
         }}
       />
       <Tab.Screen
+        name="prayers"
+        component={Prayers}
+        options={{
+          headerShown: false,
+          tabBarLabel: "Orações",
+          tabBarButton: (props) => (
+            <TabButton
+              {...props}
+              name="hands-pray"
+              label="Orações"
+              IconType="MaterialCommunityIcons"
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="donate"
         component={Donate}
         options={{
@@ -241,22 +257,6 @@ function TabNavigation() {
           ),
         }}
       />
-      <Tab.Screen
-        name="prayers"
-        component={Prayers}
-        options={{
-          headerShown: false,
-          tabBarLabel: "Orações",
-          tabBarButton: (props) => (
-            <TabButton
-              {...props}
-              name="hands-pray"
-              label="Orações"
-              IconType="MaterialCommunityIcons"
-            />
-          ),
-        }}
-      />
     </Tab.Navigator>
   )
 }
@@ -266,21 +266,16 @@ export default function Stack() {
   return (
     <ThemeProvider theme={state.theme === false ? darkTheme : lightTheme}>
       <Navigator screenOptions={{ headerShown: false }}>
-        {/* {!state.isLogged ? (
-          <Screen name="isLogged" component={isLogged} />
+        {state.isLogged ? (
+          <>
+            <Screen name="Home" component={TabNavigation} />
+            <Screen name="Profile" component={Profile} />
+            <Screen name="Friends" component={Friends} />
+          </>
         ) : (
           <>
             <Screen name="Login" component={Login} />
             <Screen name="Register" component={Register} />
-          </>
-        )} */}
-        {state.isLogged && (
-          <>
-            <Screen name="Home" component={TabNavigation} />
-            <Screen name="Profile" component={Profile} />
-            <Screen name="Login" component={TabNavigation} />
-            <Screen name="Register" component={TabNavigation} />
-            <Screen name="Friends" component={Friends} />
           </>
         )}
       </Navigator>
