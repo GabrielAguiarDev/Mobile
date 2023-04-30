@@ -165,7 +165,7 @@ function TabNavigation() {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          display: state.modal ? "none" : "flex",
+          display: !state.visibleNavigation ? "none" : "flex",
           position: "absolute",
           backgroundColor: colors.TAB_NAVIGATOR,
           borderTopWidth: 0,

@@ -3,8 +3,7 @@ import createContext from "./createContext"
 const initialState = {
   isLogged: true,
   theme: true,
-  overlay: false,
-  modal: null,
+  visibleNavigation: true,
 }
 
 const reducer = (state, action) => {
@@ -13,12 +12,16 @@ const reducer = (state, action) => {
       return { ...state, isLogged: action.payload }
     case "theme":
       return { ...state, theme: action.payload }
-    case "overlay":
-      return { ...state, overlay: action.payload }
-    case "modal":
-      return { ...state, modal: action.payload }
+    case "visibleNavigation":
+      return { ...state, visibleNavigation: action.payload }
     default:
       return state
+  }
+}
+
+const setNavigationVisible = (dispatch) => {
+  return (boolean) => {
+    dispatch({ type: "visibleNavigation", payload: boolean })
   }
 }
 
@@ -34,20 +37,8 @@ const setIsLogged = (dispatch) => {
   }
 }
 
-const setOverlay = (dispatch) => {
-  return (boolean) => {
-    dispatch({ type: "overlay", payload: boolean })
-  }
-}
-
-const setModal = (dispatch) => {
-  return (object) => {
-    dispatch({ type: "modal", payload: object })
-  }
-}
-
 export const { Context, Provider } = createContext(
   reducer,
-  { setIsLogged, setTheme, setOverlay, setModal },
+  { setIsLogged, setTheme, setNavigationVisible },
   initialState
 )

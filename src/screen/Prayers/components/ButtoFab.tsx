@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useContext, useState, useRef } from "react"
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
   withTiming,
 } from "react-native-reanimated"
+import { Modalize } from "react-native-modalize"
 
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons"
 import { useTheme } from "styled-components"
@@ -12,6 +13,7 @@ import { useTheme } from "styled-components"
 import * as S from "../../../../styles/Prayers"
 import { shadow } from "../../../../styles"
 import { StyleSheet } from "react-native"
+import { Context } from "../../../context/dataContext"
 
 const options = [
   { label: "Crescimento Espiritual" },
@@ -34,42 +36,24 @@ function TypePrayer({ label }) {
 }
 
 export default function ButtonFab() {
+  const modalizeRef = useRef<Modalize>(null)
   const [toggle, setToggle] = useState(false)
+  const { setNavigationVisible } = useContext(Context)
   const { colors } = useTheme()
-  const Width = useSharedValue(60)
-  const Height = useSharedValue(60)
-  const Right = useSharedValue(30)
-  const borderBottomRightRadius = useSharedValue(60)
-  const borderRadius = useSharedValue(60)
-  const Background = useSharedValue(colors.PRIMARY_COLOR)
+  const Height = useSharedValue(0)
 
   const openModal = () => {
     setToggle(true)
-    Width.value = withTiming(363, { duration: 300 })
-    Height.value = withSpring(530, { velocity: 0 })
-    Right.value = withTiming(15, { duration: 100 })
-    borderBottomRightRadius.value = withTiming(150, { duration: 200 })
-    borderRadius.value = withTiming(30, { duration: 200 })
-    Background.value = withTiming(colors.TAB_NAVIGATOR, { duration: 500 })
+    modalizeRef.current?.open()
   }
 
   const closeModal = () => {
     setToggle(false)
-    Width.value = withTiming(0, { duration: 200 })
-    Height.value = withTiming(0, { duration: 200 })
-    Right.value = withTiming(30, { duration: 0 })
-    borderBottomRightRadius.value = withTiming(20, { duration: 200 })
-    borderRadius.value = withTiming(30, { duration: 200 })
-    Background.value = withTiming(colors.PRIMARY_COLOR, { duration: 500 })
+    modalizeRef.current?.close()
   }
 
   const animatedStyle = useAnimatedStyle(() => ({
-    width: Width.value,
     height: Height.value,
-    right: Right.value,
-    borderRadius: borderRadius.value,
-    borderBottomRightRadius: borderBottomRightRadius.value,
-    backgroundColor: Background.value,
   }))
 
   return (
@@ -87,10 +71,18 @@ export default function ButtonFab() {
           )}
         </Animated.View>
       </S.Button>
-      <Animated.View style={[style.Modal, animatedStyle]}>
+      {/* <Animated.View style={[style.Modal, animatedStyle]}>
         {toggle && (
-          <S.Modal>
-            <S.TitleModal>
+          <S.Modal
+            style={{
+              elevation: 10,
+              shadowColor: "#00000094",
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.8,
+              shadowRadius: 3,
+            }}
+          >
+            <S.TitleModal onPress={() => closeModal()}>
               <S.Title>Tipos de orações</S.Title>
               <MaterialCommunityIcons
                 name="hands-pray"
@@ -105,7 +97,7 @@ export default function ButtonFab() {
             </S.OptionsContent>
           </S.Modal>
         )}
-      </Animated.View>
+      </Animated.View> */}
     </>
   )
 }
@@ -113,15 +105,6 @@ export default function ButtonFab() {
 const style = StyleSheet.create({
   Modal: {
     position: "absolute",
-    bottom: 120,
-    width: 0,
-    height: 0,
-    zIndex: -1,
-    justifyContent: "center",
-    elevation: 10,
-    shadowColor: "#000000a4",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 3,
+    bottom: 0,
   },
 })

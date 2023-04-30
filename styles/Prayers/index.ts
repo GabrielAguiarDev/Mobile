@@ -1,3 +1,4 @@
+import { Dimensions } from "react-native"
 import styled from "styled-components/native"
 import { RFValue } from "react-native-responsive-fontsize"
 
@@ -42,10 +43,19 @@ export const ContentModal = styled.View`
 
 export const Modal = styled.View`
   position: relative;
-  flex: 1;
+  justify-content: center;
 `
 
-export const TitleModal = styled.View`
+export const BackgroundShadow = styled.Pressable`
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: ${Dimensions.get("screen").width}px;
+  height: ${Dimensions.get("screen").height}px;
+  background-color: #000000d4;
+`
+
+export const TitleModal = styled.Pressable`
   width: 100%;
   flex-direction: row;
   align-items: center;
@@ -101,7 +111,7 @@ export const Button = styled.Pressable`
   right: 25px;
   width: 60px;
   height: 60px;
-  z-index: 3;
+  z-index: 1;
   background-color: ${(props) => props.theme.colors.PRIMARY_COLOR};
   justify-content: center;
   align-items: center;
