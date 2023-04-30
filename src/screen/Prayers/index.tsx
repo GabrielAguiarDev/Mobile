@@ -1,8 +1,9 @@
 import { useRef } from "react"
+import { Switch } from "react-native"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
-import { GestureHandlerRootView } from "react-native-gesture-handler"
-import { Modalize } from "react-native-modalize"
+import { gestureHandlerRootHOC } from "react-native-gesture-handler"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
+import BottomSheet from "@gorhom/bottom-sheet"
 
 import { Header } from "../../components"
 import PrayersPrivate from "./private"
@@ -53,23 +54,24 @@ function TypePrayer({ label }) {
   )
 }
 
-export default function Prayers() {
-  const modalizeRef = useRef<Modalize>(null)
+function Prayers() {
+  const BottomSheetRef = useRef<BottomSheet>()
   const { colors } = useTheme()
 
   const openModal = () => {
-    modalizeRef.current?.open()
+    BottomSheetRef?.current?.expand()
   }
 
   const closeModal = () => {
-    modalizeRef.current?.close()
+    BottomSheetRef?.current?.close()
   }
+
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <>
       <Content>
         <Header page="Orações" />
         <TabTopNavigation />
-        <S.Button onPress={() => openModal()}>
+        <S.Button onPress={openModal}>
           <MaterialCommunityIcons
             name="hands-pray"
             size={30}
@@ -77,11 +79,14 @@ export default function Prayers() {
           />
         </S.Button>
       </Content>
-      <Modalize
-        ref={modalizeRef}
-        modalHeight={700}
-        snapPoint={500}
-        modalStyle={{ backgroundColor: colors.SECONDARY_COLOR }}
+      <BottomSheet
+        ref={BottomSheetRef}
+        animationConfigs={{
+          velocity: 25,
+          damping: 12,
+        }}
+        index={0}
+        snapPoints={[1, "80%"]}
       >
         <S.Modal
           style={{
@@ -92,7 +97,7 @@ export default function Prayers() {
             shadowRadius: 3,
           }}
         >
-          <S.TitleModal onPress={() => closeModal()}>
+          <S.TitleModal onPress={closeModal}>
             <S.Title>Tipos de orações</S.Title>
             <MaterialCommunityIcons
               name="hands-pray"
@@ -106,7 +111,9 @@ export default function Prayers() {
             ))}
           </S.OptionsContent>
         </S.Modal>
-      </Modalize>
-    </GestureHandlerRootView>
+      </BottomSheet>
+    </>
   )
 }
+
+export default gestureHandlerRootHOC(Prayers)
