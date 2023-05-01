@@ -1,4 +1,3 @@
-import { useRoute } from "@react-navigation/native"
 import * as S from "../../../styles/Prayers"
 
 export default function PrayerPrivate() {

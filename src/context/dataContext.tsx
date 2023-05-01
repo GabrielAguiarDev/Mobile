@@ -16,7 +16,7 @@ const reducer = (state, action) => {
     case "visibleNavigation":
       return { ...state, visibleNavigation: action.payload }
     case "NavigationPrayers":
-      return { ...state, visibleNavigation: action.payload }
+      return { ...state, NavigationPrayers: action.payload }
     default:
       return state
   }

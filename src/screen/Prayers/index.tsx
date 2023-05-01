@@ -1,6 +1,5 @@
 import { useContext, useRef } from "react"
 import { Animated, View, TouchableOpacity } from "react-native"
-import { useRoute } from "@react-navigation/native"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { gestureHandlerRootHOC } from "react-native-gesture-handler"
 import BottomSheet, { BottomSheetBackdrop } from "@gorhom/bottom-sheet"
@@ -43,6 +42,9 @@ function ModalPrayersShared({ bottomRef }) {
   return (
     <BottomSheet
       ref={bottomRef}
+      backdropComponent={(backdropProps) => (
+        <BottomSheetBackdrop {...backdropProps} enableTouchThrough={true} />
+      )}
       animationConfigs={{
         velocity: 25,
         damping: 12,
@@ -81,6 +83,9 @@ function ModalPrayersPrivate({ bottomRef }) {
   return (
     <BottomSheet
       ref={bottomRef}
+      backdropComponent={(backdropProps) => (
+        <BottomSheetBackdrop {...backdropProps} enableTouchThrough={true} />
+      )}
       animationConfigs={{
         velocity: 25,
         damping: 12,
@@ -119,7 +124,6 @@ function ModalPrayersPrivate({ bottomRef }) {
 }
 
 function MyTabBar({ state, descriptors, navigation, position }) {
-  console.log(state)
   return (
     <View key={Math.random()} style={{ flexDirection: "row" }}>
       {state.routes.map((route, index) => {
@@ -160,11 +164,12 @@ function MyTabBar({ state, descriptors, navigation, position }) {
 
         return (
           <TouchableOpacity
+            key={Math.random()}
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
-            onPress={onPress}
+            onPress={() => onPress()}
             onLongPress={onLongPress}
             style={{ flex: 1 }}
           >
@@ -177,8 +182,6 @@ function MyTabBar({ state, descriptors, navigation, position }) {
 }
 
 function TabTopNavigation() {
-  const { setNavigationPrayers, state } = useContext(Context)
-
   return (
     <TopTab.Navigator
       tabBar={(props) => <MyTabBar {...props} />}
@@ -201,10 +204,10 @@ function TabTopNavigation() {
 }
 
 function Prayers() {
+  const { state } = useContext(Context)
   const { colors } = useTheme()
   const BottomSheetPrivateRef = useRef<BottomSheet>()
   const BottomSheetSharedRef = useRef<BottomSheet>()
-  const route = useRoute()
 
   return (
     <Content>
@@ -212,7 +215,11 @@ function Prayers() {
       <TabTopNavigation />
       <S.Button
         style={shadow}
-        onPress={() => BottomSheetSharedRef?.current?.expand()}
+        onPress={() => {
+          state.NavigationPrayers === "private"
+            ? BottomSheetSharedRef?.current?.expand()
+            : BottomSheetPrivateRef?.current?.expand()
+        }}
       >
         <MaterialCommunityIcons
           name="hands-pray"

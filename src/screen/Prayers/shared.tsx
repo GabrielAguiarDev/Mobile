@@ -1,25 +1,17 @@
+import { useIsFocused, useNavigation } from "@react-navigation/native"
 import * as S from "../../../styles/Prayers"
-
-/* 
-  import InsetShadow from "react-native-inset-shadow"
-  <InsetShadow containerStyle={style.Box}>
-  <S.Prayers
-    prayer={!prayersPrivate}
-    onPress={() => setPrayersPrivate(true)}
-    style={prayersPrivate ? shadow : {}}
-  >
-    <S.Type prayer={prayersPrivate}>Particular</S.Type>
-  </S.Prayers>
-  <S.Prayers
-    prayer={!prayersPrivate}
-    onPress={() => setPrayersPrivate(false)}
-    style={!prayersPrivate ? shadow : {}}
-  >
-    <S.Type prayer={!prayersPrivate}>Compartilhado</S.Type>
-  </S.Prayers>
-</InsetShadow> */
+import { useContext, useEffect } from "react"
+import { Context } from "../../context/dataContext"
 
 export default function PrayerShared() {
+  const { setNavigationPrayers } = useContext(Context)
+  const navigation = useNavigation()
+  const isFocused = useIsFocused()
+
+  useEffect(() => {
+    setNavigationPrayers(isFocused ? "private" : "shared")
+  }, [navigation, isFocused])
+
   return (
     <S.ContentScreen>
       <S.TextEmpty>Orações Compartilhadas</S.TextEmpty>
