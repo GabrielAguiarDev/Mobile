@@ -111,7 +111,7 @@ export const Button = styled.Pressable`
   right: 25px;
   width: 60px;
   height: 60px;
-  z-index: 1;
+  z-index: 0;
   background-color: ${(props) => props.theme.colors.PRIMARY_COLOR};
   justify-content: center;
   align-items: center;
