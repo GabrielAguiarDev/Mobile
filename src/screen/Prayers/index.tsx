@@ -13,6 +13,7 @@ import { Content, shadow } from "../../../styles"
 import * as S from "../../../styles/Prayers"
 import { useTheme } from "styled-components"
 import { Context } from "../../context/dataContext"
+import { Text } from "react-native"
 
 const TopTab = createMaterialTopTabNavigator()
 
@@ -182,21 +183,50 @@ function MyTabBar({ state, descriptors, navigation, position }) {
 }
 
 function TabTopNavigation() {
+  const { colors } = useTheme()
   return (
     <TopTab.Navigator
-      tabBar={(props) => <MyTabBar {...props} />}
+      /* tabBar={(props) => <MyTabBar {...props} />} */
       initialRouteName="shared"
     >
       <TopTab.Screen
         name="shared"
         component={PrayersShared}
-        options={{ tabBarLabel: "Compartilhadas" }}
+        options={{
+          tabBarLabel: ({ color, focused }) => {
+            return (
+              <Text
+                style={{
+                  color: focused ? colors.PRIMARY_COLOR : color,
+                  fontWeight: "bold",
+                  fontFamily: "serif",
+                }}
+              >
+                Compartilhadas
+              </Text>
+            )
+          },
+          tabBarIndicatorStyle: { backgroundColor: colors.PRIMARY_COLOR },
+        }}
       />
       <TopTab.Screen
         name="private"
         component={PrayersPrivate}
         options={{
-          tabBarLabel: "Privadas",
+          tabBarLabel: ({ color, focused }) => {
+            return (
+              <Text
+                style={{
+                  color: focused ? colors.PRIMARY_COLOR : color,
+                  fontWeight: "bold",
+                  fontFamily: "serif",
+                }}
+              >
+                Privadas
+              </Text>
+            )
+          },
+          tabBarIndicatorStyle: { backgroundColor: colors.PRIMARY_COLOR },
         }}
       />
     </TopTab.Navigator>
