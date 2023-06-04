@@ -1,12 +1,16 @@
 import styled from "styled-components/native"
 import { RFValue } from "react-native-responsive-fontsize"
+import { css } from "styled-components"
 
-export const Content = styled.View`
-  position: relative;
-  flex: 1;
-  padding-top: 40px;
-  background-color: ${(props) => props.theme.colors.BACKGROUND};
-`
+export const Content = styled.View((props) => {
+  const { colors } = props.theme
+  return css`
+    position: relative;
+    flex: 1;
+    padding-top: 40px;
+    background-color: ${colors.BACKGROUND_HEADER};
+  `
+})
 
 export const TitlePage = styled.Text`
   font-size: ${RFValue(15)}px;
