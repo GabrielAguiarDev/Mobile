@@ -2,7 +2,7 @@ import styled from "styled-components/native"
 import { RFValue } from "react-native-responsive-fontsize"
 import { css } from "styled-components"
 
-export const Content = styled.View((props) => {
+export const Content = styled.SafeAreaView((props) => {
   const { colors } = props.theme
   return css`
     position: relative;

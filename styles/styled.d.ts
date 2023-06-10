@@ -8,6 +8,7 @@ export type Theme = {
   BACKGROUND_ICON: string
   ICON_LIVE: string
   BACKGROUND_HEADER: string
+  UNREADMESSAGE: string
 }
 
 declare module "styled-components" {

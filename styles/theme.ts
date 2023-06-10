@@ -9,6 +9,8 @@ const darkTheme = {
 
     BACKGROUND_HEADER: "#FFF",
     TAB_NAVIGATOR: "#090016",
+
+    UNREADMESSAGE: "#00ae9d",
   },
 }
 
@@ -23,6 +25,8 @@ const lightTheme = {
 
     BACKGROUND_HEADER: "#FFF",
     TAB_NAVIGATOR: "#FFF",
+
+    UNREADMESSAGE: "#00ae9d",
   },
 }
 

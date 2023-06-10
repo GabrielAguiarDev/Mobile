@@ -71,3 +71,12 @@ export const Back = styled.Pressable`
   justify-content: center;
   padding-left: 10px;
 `
+
+export const IconRight = styled.Pressable`
+  position: absolute;
+  right: 10px;
+  width: 50px;
+  height: 40px;
+  justify-content: center;
+  padding-left: 10px;
+`
