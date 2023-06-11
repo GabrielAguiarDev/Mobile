@@ -2,7 +2,7 @@ import styled from "styled-components/native"
 import { RFValue } from "react-native-responsive-fontsize"
 import { css } from "styled-components"
 
-export const Content = styled.SafeAreaView((props) => {
+export const Content = styled.View((props) => {
   const { colors } = props.theme
   return css`
     flex-direction: row;

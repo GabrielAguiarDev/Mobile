@@ -15,7 +15,7 @@ export default function Header({ page, info }: IPage) {
   const navigation = useNavigation<propsStack>()
   const { colors } = useTheme()
   return (
-    <S.Content>
+    <S.Content style={[shadow]}>
       <S.ProfileContent onPress={() => navigation.navigate("Profile")}>
         <S.Profile>
           <Ionicons name="person" size={20} color={colors.PRIMARY_COLOR} />
