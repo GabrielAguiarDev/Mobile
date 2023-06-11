@@ -219,7 +219,7 @@ export default function Friends() {
         icon="search"
         size={28}
       />
-      <Animated.View style={[S.style.ContainerSearch, animatedSearch]}>
+      <Animated.View style={[S.styleSheet.ContainerSearch, animatedSearch]}>
         <S.Search
           ref={inputSearch}
           style={shadow}
@@ -231,7 +231,7 @@ export default function Friends() {
           name="x"
           size={30}
           onPress={() => setSearch("")}
-          style={S.style.icon}
+          style={S.styleSheet.icon}
           color={"#9c9c9c"}
         />
       </Animated.View>

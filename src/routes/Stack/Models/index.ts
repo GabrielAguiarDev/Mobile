@@ -7,6 +7,13 @@ export type propsNavigationStack = {
   Profile: undefined
   Register: undefined
   Friends: undefined
+  books: undefined
+  chapters: {
+    book: string
+  }
+  verses: {
+    chapters: string
+  }
 }
 
 export type propsStack = NativeStackNavigationProp<propsNavigationStack>

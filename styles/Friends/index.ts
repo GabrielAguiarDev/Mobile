@@ -3,7 +3,7 @@ import { css } from "styled-components"
 import styled from "styled-components/native"
 import { RFValue } from "react-native-responsive-fontsize"
 
-export const style = StyleSheet.create({
+export const styleSheet = StyleSheet.create({
   icon: {
     position: "absolute",
     right: 10,
