@@ -1,37 +1,38 @@
 import { Dimensions, StyleSheet } from "react-native"
 import { css } from "styled-components"
-import styled, { DefaultTheme, ThemeProps } from "styled-components/native"
-
-export const ContainerSearch = styled.View`
-  position: relative;
-  width: ${Dimensions.get("screen").width - 30}px;
-  margin: 0 auto;
-  margin-top: 20px;
-`
-
-export const Search = styled.TextInput((props) => {
-  const { colors } = props.theme
-  return css`
-    background-color: ${colors.BACKGROUND};
-    height: 45px;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 17px;
-  `
-})
+import styled from "styled-components/native"
+import { RFValue } from "react-native-responsive-fontsize"
 
 export const style = StyleSheet.create({
   icon: {
     position: "absolute",
-    right: 0,
+    right: 10,
     top: 0,
     padding: 7,
     paddingHorizontal: 13,
   },
+  ContainerSearch: {
+    position: "relative",
+    marginTop: 30,
+    justifyContent: "center",
+    alignContent: "center",
+  },
+})
+
+export const Search = styled.TextInput((props) => {
+  const { colors } = props.theme
+  return css`
+    background-color: ${colors.BACKGROUND_CARDS};
+    width: 93%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 17px;
+    margin: 0 auto;
+  `
 })
 
 export const ContainerFriends = styled.View`
-  margin-top: 20px;
   justify-content: center;
   align-items: center;
 `
@@ -43,11 +44,11 @@ export const CardFriend = styled.TouchableOpacity((props) => {
     align-items: center;
     width: ${Dimensions.get("screen").width - 30}px;
     margin: 0 auto;
-    background-color: ${colors.BACKGROUND};
+    background-color: ${colors.BACKGROUND_CARDS};
     height: 70px;
     border-radius: 5px;
     padding: 0 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   `
 })
 
@@ -87,22 +88,22 @@ export const OldMessage = styled.View`
   gap: 3px;
 `
 
-export const UserSend = styled.Text`
-  font-weight: 500;
-  font-size: 12px;
-  color: #555;
-`
-
 export const Message = styled.Text`
   font-size: 12px;
+`
+
+export const ContainerInfoMessage = styled.View`
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 `
 
 export const ContainerUnread = styled.View((props) => {
   const { colors } = props.theme
   return css`
     position: absolute;
-    right: 10px;
-    top: 15px;
+    right: 15px;
+    top: 30px;
     justify-content: center;
     align-items: center;
     background-color: ${colors.UNREADMESSAGE};
@@ -112,8 +113,31 @@ export const ContainerUnread = styled.View((props) => {
   `
 })
 
+export const Hour = styled.Text((props) => {
+  const { colors } = props.theme
+  return css`
+    position: absolute;
+    right: 13px;
+    top: 10px;
+    font-size: ${RFValue(10)}px;
+    color: ${colors.UNREADMESSAGE};
+  `
+})
+
 export const Unread = styled.Text`
   color: #fff;
   font-size: 12px;
   font-weight: bold;
+`
+
+export const ResultSearch = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+`
+
+export const Empty = styled.Text`
+  font-size: ${RFValue(20)}px;
+  font-weight: bold;
+  color: #cfcfcf;
 `

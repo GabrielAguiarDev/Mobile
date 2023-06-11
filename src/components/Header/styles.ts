@@ -2,12 +2,12 @@ import styled from "styled-components/native"
 import { RFValue } from "react-native-responsive-fontsize"
 import { css } from "styled-components"
 
-export const Content = styled.View((props) => {
+export const Content = styled.SafeAreaView((props) => {
   const { colors } = props.theme
   return css`
     flex-direction: row;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: ${colors.BACKGROUND_HEADER};
   `
 })
@@ -60,12 +60,13 @@ export const ContentSecond = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 10px 20px;
+  padding-top: 30px;
 `
 
 export const Back = styled.Pressable`
   position: absolute;
   left: 20px;
+  top: 20px;
   width: 50px;
   height: 40px;
   justify-content: center;
@@ -75,6 +76,7 @@ export const Back = styled.Pressable`
 export const IconRight = styled.Pressable`
   position: absolute;
   right: 10px;
+  top: 20px;
   width: 50px;
   height: 40px;
   justify-content: center;

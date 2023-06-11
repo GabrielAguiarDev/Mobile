@@ -7,8 +7,8 @@ export const Content = styled.SafeAreaView((props) => {
   return css`
     position: relative;
     flex: 1;
-    padding-top: 40px;
-    background-color: ${colors.BACKGROUND_HEADER};
+    padding-top: 30px;
+    background-color: ${colors.BACKGROUND};
   `
 })
 

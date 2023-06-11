@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { useContext, useRef, useEffect } from "react"
 import { ThemeProvider, useTheme } from "styled-components"
 import * as Animatable from "react-native-animatable"
-import { Image, StyleSheet } from "react-native"
+import { Image, StyleSheet, StatusBar } from "react-native"
 
 // Icons
 import SVG from "../../../assets/svg"
@@ -265,6 +265,15 @@ export default function Stack() {
   const { state } = useContext(Context)
   return (
     <ThemeProvider theme={state.theme === false ? darkTheme : lightTheme}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={
+          state.theme === false
+            ? darkTheme.colors.BACKGROUND_HEADER
+            : lightTheme.colors.BACKGROUND_HEADER
+        }
+        translucent
+      />
       <Navigator screenOptions={{ headerShown: false }}>
         {state.isLogged ? (
           <>

@@ -8,6 +8,7 @@ const darkTheme = {
     TEXT: "#fff",
 
     BACKGROUND_HEADER: "#FFF",
+    BACKGROUND_CARDS: "#FFF",
     TAB_NAVIGATOR: "#090016",
 
     UNREADMESSAGE: "#00ae9d",
@@ -24,6 +25,7 @@ const lightTheme = {
     TEXT: "#000",
 
     BACKGROUND_HEADER: "#FFF",
+    BACKGROUND_CARDS: "#FFF",
     TAB_NAVIGATOR: "#FFF",
 
     UNREADMESSAGE: "#00ae9d",
