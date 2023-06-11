@@ -4,6 +4,7 @@ const initialState = {
   isLogged: true,
   theme: true,
   visibleNavigation: true,
+  NavigationPrayers: "shared",
 }
 
 const reducer = (state, action) => {
@@ -14,6 +15,8 @@ const reducer = (state, action) => {
       return { ...state, theme: action.payload }
     case "visibleNavigation":
       return { ...state, visibleNavigation: action.payload }
+    case "NavigationPrayers":
+      return { ...state, NavigationPrayers: action.payload }
     default:
       return state
   }
@@ -22,6 +25,12 @@ const reducer = (state, action) => {
 const setNavigationVisible = (dispatch) => {
   return (boolean) => {
     dispatch({ type: "visibleNavigation", payload: boolean })
+  }
+}
+
+const setNavigationPrayers = (dispatch) => {
+  return (screen) => {
+    dispatch({ type: "NavigationPrayers", payload: screen })
   }
 }
 
@@ -39,6 +48,6 @@ const setIsLogged = (dispatch) => {
 
 export const { Context, Provider } = createContext(
   reducer,
-  { setIsLogged, setTheme, setNavigationVisible },
+  { setIsLogged, setTheme, setNavigationVisible, setNavigationPrayers },
   initialState
 )

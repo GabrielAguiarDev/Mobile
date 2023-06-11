@@ -7,6 +7,9 @@ export type Theme = {
   TAB_NAVIGATOR: string
   BACKGROUND_ICON: string
   ICON_LIVE: string
+  BACKGROUND_HEADER: string
+  BACKGROUND_CARDS: string
+  UNREADMESSAGE: string
 }
 
 declare module "styled-components" {

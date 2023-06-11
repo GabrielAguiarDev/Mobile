@@ -4,8 +4,8 @@ export const Button = styled.View`
   width: 45px;
   height: 45px;
   border-radius: 25px;
-  border: 2px solid ${(props) => props.theme.colors.BACKGROUND};
-  background-color: ${(props) => props.theme.colors.BACKGROUND};
+  border: 2px solid ${(props) => props.theme.colors.TAB_NAVIGATOR};
+  background-color: ${(props) => props.theme.colors.TAB_NAVIGATOR};
   justify-content: center;
   align-items: center;
 `
