@@ -2,15 +2,14 @@ import { Text } from "react-native"
 
 import { Header } from "../../components"
 
-import { Content, shadow } from "../../../styles"
+import { Content } from "../../../styles"
 import { useTheme } from "styled-components"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
-import { useNavigation } from "@react-navigation/native"
+import { gestureHandlerRootHOC } from "react-native-gesture-handler"
 
 import BooksScreen from "./books"
 import ChaptersScreen from "./chapters"
 import VersesScreen from "./verses"
-import { gestureHandlerRootHOC } from "react-native-gesture-handler"
 
 const TopTab = createMaterialTopTabNavigator()
 
@@ -83,7 +82,6 @@ function TabTopNavigation() {
 }
 
 function Bible() {
-  const navigation = useNavigation()
   return (
     <Content>
       <Header page="Bíblia" info="NVT" />

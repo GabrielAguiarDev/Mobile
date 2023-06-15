@@ -1,6 +1,6 @@
 import styled from "styled-components/native"
 
-export const ContentLive = styled.View``
+export const ContentScreen = styled.View``
 
 export const BannerVideo = styled.View``
 
