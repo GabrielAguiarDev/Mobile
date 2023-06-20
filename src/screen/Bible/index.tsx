@@ -2,7 +2,7 @@ import { Text } from "react-native"
 
 import { Header } from "../../components"
 
-import { Content, shadow } from "../../../styles"
+import { Content } from "../../../styles"
 import { useTheme } from "styled-components"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { useNavigation } from "@react-navigation/native"

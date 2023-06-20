@@ -9,6 +9,8 @@ export type Theme = {
   ICON_LIVE: string
   BACKGROUND_HEADER: string
   BACKGROUND_CARDS: string
+  BACKGROUND_CARDS2: string
+  CONTENT_CARD2: string
   UNREADMESSAGE: string
 }
 

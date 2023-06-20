@@ -1,5 +1,4 @@
 import { useContext, useRef } from "react"
-import { Animated, View, TouchableOpacity } from "react-native"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { gestureHandlerRootHOC } from "react-native-gesture-handler"
 import BottomSheet, { BottomSheetBackdrop } from "@gorhom/bottom-sheet"
@@ -44,7 +43,11 @@ function ModalPrayersShared({ bottomRef }) {
     <BottomSheet
       ref={bottomRef}
       backdropComponent={(backdropProps) => (
-        <BottomSheetBackdrop {...backdropProps} enableTouchThrough={true} />
+        <BottomSheetBackdrop
+          {...backdropProps}
+          enableTouchThrough={true}
+          opacity={0.4}
+        />
       )}
       animationConfigs={{
         velocity: 25,
@@ -85,7 +88,11 @@ function ModalPrayersPrivate({ bottomRef }) {
     <BottomSheet
       ref={bottomRef}
       backdropComponent={(backdropProps) => (
-        <BottomSheetBackdrop {...backdropProps} enableTouchThrough={true} />
+        <BottomSheetBackdrop
+          {...backdropProps}
+          enableTouchThrough={true}
+          opacity={0.4}
+        />
       )}
       animationConfigs={{
         velocity: 25,
@@ -95,7 +102,7 @@ function ModalPrayersPrivate({ bottomRef }) {
         zIndex: 3,
       }}
       index={-1}
-      snapPoints={[1, "80%"]}
+      snapPoints={[1, "30%"]}
     >
       <S.Modal
         style={{
