@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native"
 import styled from "styled-components/native"
 import { RFValue } from "react-native-responsive-fontsize"
-import { css } from "styled-components"
+import { DefaultTheme, css } from "styled-components"
 
 export const styleSheet = StyleSheet.create({
   chapters: {
@@ -115,6 +115,12 @@ export const ContainerHeader = styled.View((props) => {
   `
 })
 
+export const ContainerHeaderModal = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin: 5px 10px 15px;
+`
+
 export const ContentCap = styled.Pressable((props) => {
   const { colors } = props.theme
   return css`
@@ -157,6 +163,7 @@ export const ContainerHandleFont = styled.View`
   justify-content: center;
   gap: 10px;
   margin-top: 20px;
+  margin-bottom: 20px;
 `
 
 export const ContentButtonSize = styled.View((props) => {
@@ -176,13 +183,18 @@ export const ButtonSizeText = styled.Pressable`
   flex: 1;
 `
 
-export const ButtonLineHeight = styled.Pressable((props) => {
+interface IButtonLineHeight {
+  gap: number
+  theme: DefaultTheme
+}
+
+export const ButtonLineHeight = styled.Pressable((props: IButtonLineHeight) => {
   const { colors } = props.theme
   return css`
     height: 100%;
     justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: ${3 + props.gap * 3}px;
     padding: 5px 15px;
     border-radius: 8px;
     background-color: ${colors.BACKGROUND_CARDS2};
@@ -201,7 +213,7 @@ export const IconLine = styled.View((props) => {
 export const ContainerFontFamily = styled.Pressable((props) => {
   const { colors } = props.theme
   return css`
-    margin-top: 20px;
+    margin-top: 10px;
     flex-direction: row;
     justify-content: space-between;
     padding: 20px 20px 15px;
@@ -225,3 +237,18 @@ export const LabelSelect = styled.Text((props) => {
     color: ${colors.CONTENT_CARD2};
   `
 })
+
+export const BackContent = styled.Pressable`
+  position: absolute;
+  left: 0;
+  padding: 5px 10px;
+`
+
+export const TitleModal = styled.Text`
+  font-size: ${RFValue(16)}px;
+`
+
+export const ContainerFonts = styled.View`
+  margin-top: 20px;
+  background-color: red;
+`
