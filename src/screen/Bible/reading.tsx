@@ -1,4 +1,5 @@
-import { useEffect, useState, useMemo, useCallback } from "react"
+import { useState, useCallback } from "react"
+import { SafeAreaView } from "react-native-safe-area-context"
 import { BackHandler, Text, View } from "react-native"
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 
@@ -7,7 +8,6 @@ import { Ionicons, AntDesign, MaterialIcons } from "@expo/vector-icons"
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetFlatList,
-  BottomSheetSectionList,
 } from "@gorhom/bottom-sheet"
 import { propsStack } from "../../routes/Stack/Models"
 
@@ -295,24 +295,26 @@ function Reading() {
   const [fontFamily, setFontFamily] = useState("Roboto Sans")
 
   return (
-    <Content>
-      <HeaderBible
-        book={route.params?.book}
-        cap={route.params?.chapters}
-        refButton={BottomSheetFontRef}
-      />
-      <ModalFontFamily
-        fontFamily={fontFamily}
-        setFontFamily={setFontFamily}
-        bottomRef={BottomSheetFontRef}
-        refFontFamily={BottomSheetFontFamilyRef}
-      />
-      <ModalFont
-        fontFamily={fontFamily}
-        bottomRef={BottomSheetFontRef}
-        refFontFamily={BottomSheetFontFamilyRef}
-      />
-    </Content>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Content>
+        <HeaderBible
+          book={route.params?.book}
+          cap={route.params?.chapters}
+          refButton={BottomSheetFontRef}
+        />
+        <ModalFontFamily
+          fontFamily={fontFamily}
+          setFontFamily={setFontFamily}
+          bottomRef={BottomSheetFontRef}
+          refFontFamily={BottomSheetFontFamilyRef}
+        />
+        <ModalFont
+          fontFamily={fontFamily}
+          bottomRef={BottomSheetFontRef}
+          refFontFamily={BottomSheetFontFamilyRef}
+        />
+      </Content>
+    </SafeAreaView>
   )
 }
 
