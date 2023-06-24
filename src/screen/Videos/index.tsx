@@ -118,7 +118,7 @@ function ModalPlayer({ refVideo, data }) {
             <S.ContainerTitlePlayer onPress={() => handleShowDescription()}>
               <S.TitleVideoPlay>{data?.title}</S.TitleVideoPlay>
               <AntDesign
-                name={show ? "down" : "up"}
+                name={show ? "up" : "down"}
                 style={{ marginTop: 5 }}
                 size={20}
                 color="black"
