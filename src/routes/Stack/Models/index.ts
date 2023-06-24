@@ -12,6 +12,11 @@ export type propsNavigationStack = {
     book: string
   }
   verses: {
+    book: string
+    chapters: string
+  }
+  Reading: {
+    book: string
     chapters: string
   }
 }

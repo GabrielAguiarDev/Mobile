@@ -1,5 +1,5 @@
 import { useContext, useRef } from "react"
-import { Animated, View, TouchableOpacity } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { gestureHandlerRootHOC } from "react-native-gesture-handler"
 import BottomSheet, { BottomSheetBackdrop } from "@gorhom/bottom-sheet"
@@ -44,7 +44,11 @@ function ModalPrayersShared({ bottomRef }) {
     <BottomSheet
       ref={bottomRef}
       backdropComponent={(backdropProps) => (
-        <BottomSheetBackdrop {...backdropProps} enableTouchThrough={true} />
+        <BottomSheetBackdrop
+          {...backdropProps}
+          enableTouchThrough={true}
+          opacity={0.4}
+        />
       )}
       animationConfigs={{
         velocity: 25,
@@ -85,7 +89,11 @@ function ModalPrayersPrivate({ bottomRef }) {
     <BottomSheet
       ref={bottomRef}
       backdropComponent={(backdropProps) => (
-        <BottomSheetBackdrop {...backdropProps} enableTouchThrough={true} />
+        <BottomSheetBackdrop
+          {...backdropProps}
+          enableTouchThrough={true}
+          opacity={0.4}
+        />
       )}
       animationConfigs={{
         velocity: 25,
@@ -95,7 +103,7 @@ function ModalPrayersPrivate({ bottomRef }) {
         zIndex: 3,
       }}
       index={-1}
-      snapPoints={[1, "80%"]}
+      snapPoints={[1, "30%"]}
     >
       <S.Modal
         style={{
@@ -179,26 +187,28 @@ function Prayers() {
   const BottomSheetSharedRef = useRef<BottomSheet>()
 
   return (
-    <Content>
-      <Header page="Orações" />
-      <TabTopNavigation />
-      <S.Button
-        style={shadow}
-        onPress={() => {
-          state.NavigationPrayers === "private"
-            ? BottomSheetSharedRef?.current?.expand()
-            : BottomSheetPrivateRef?.current?.expand()
-        }}
-      >
-        <MaterialCommunityIcons
-          name="hands-pray"
-          size={30}
-          color={colors.BACKGROUND_ICON}
-        />
-      </S.Button>
-      <ModalPrayersPrivate bottomRef={BottomSheetPrivateRef} />
-      <ModalPrayersShared bottomRef={BottomSheetSharedRef} />
-    </Content>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Content>
+        <Header page="Orações" />
+        <TabTopNavigation />
+        <S.Button
+          style={shadow}
+          onPress={() => {
+            state.NavigationPrayers === "private"
+              ? BottomSheetSharedRef?.current?.expand()
+              : BottomSheetPrivateRef?.current?.expand()
+          }}
+        >
+          <MaterialCommunityIcons
+            name="hands-pray"
+            size={30}
+            color={colors.BACKGROUND_ICON}
+          />
+        </S.Button>
+        <ModalPrayersPrivate bottomRef={BottomSheetPrivateRef} />
+        <ModalPrayersShared bottomRef={BottomSheetSharedRef} />
+      </Content>
+    </SafeAreaView>
   )
 }
 

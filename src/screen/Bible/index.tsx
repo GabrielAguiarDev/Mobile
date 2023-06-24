@@ -1,4 +1,5 @@
 import { Text } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
 
 import { Header } from "../../components"
 
@@ -83,10 +84,12 @@ function TabTopNavigation() {
 
 function Bible() {
   return (
-    <Content>
-      <Header page="Bíblia" info="NVT" />
-      <TabTopNavigation />
-    </Content>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Content>
+        <Header page="Bíblia" info="NVT" />
+        <TabTopNavigation />
+      </Content>
+    </SafeAreaView>
   )
 }
 

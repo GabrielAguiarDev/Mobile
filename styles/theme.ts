@@ -9,6 +9,8 @@ const darkTheme = {
 
     BACKGROUND_HEADER: "#FFF",
     BACKGROUND_CARDS: "#FFF",
+    BACKGROUND_CARDS2: "#bdbdbd8c",
+    CONTENT_CARD2: "#555555",
     TAB_NAVIGATOR: "#090016",
 
     UNREADMESSAGE: "#00ae9d",
@@ -26,6 +28,8 @@ const lightTheme = {
 
     BACKGROUND_HEADER: "#FFF",
     BACKGROUND_CARDS: "#FFF",
+    BACKGROUND_CARDS2: "#bdbdbd8c",
+    CONTENT_CARD2: "#555555",
     TAB_NAVIGATOR: "#FFF",
 
     UNREADMESSAGE: "#00ae9d",

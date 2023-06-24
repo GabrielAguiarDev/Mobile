@@ -27,7 +27,7 @@ export default function Header({ page, info }: IPage) {
         onPress={() => navigation.navigate("Friends")}
         style={shadow}
       >
-        <SimpleLineIcons name="people" size={29} color="#000" />
+        <SimpleLineIcons name="people" size={29} color={colors.PRIMARY_COLOR} />
       </S.contentIcon>
     </S.Content>
   )

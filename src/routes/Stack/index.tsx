@@ -23,6 +23,7 @@ import Register from "../../screen/Register"
 import Home from "../../screen/Home"
 import Prayers from "../../screen/Prayers"
 import Bible from "../../screen/Bible"
+import Reading from "../../screen/Bible/reading"
 import Friends from "../../screen/Friends"
 import Profile from "../../screen/Profile"
 import Videos from "../../screen/Videos"
@@ -278,6 +279,7 @@ export default function Stack() {
         {state.isLogged ? (
           <>
             <Screen name="Home" component={TabNavigation} />
+            <Screen name="Reading" component={Reading} />
             <Screen name="Profile" component={Profile} />
             <Screen name="Friends" component={Friends} />
           </>

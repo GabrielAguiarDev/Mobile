@@ -12,13 +12,18 @@ export default function Chapters({ route }) {
 
   // Dados para teste
   let dataTest = []
-  for (let n = 1; n <= 50; n++) {
+  for (let n = 1; n <= 35; n++) {
     dataTest.push(n)
   }
 
   return (
     <S.ContentScreen>
-      <S.Chapters>{route.params?.book}</S.Chapters>
+      <S.Chapters>
+        <S.VerseSelected style={S.styleSheet.label}>Livro:</S.VerseSelected>
+        <S.VerseSelected style={S.styleSheet.title}>
+          {route.params?.book}
+        </S.VerseSelected>
+      </S.Chapters>
       <ScrollView
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{
@@ -28,7 +33,12 @@ export default function Chapters({ route }) {
         <S.ContainerChapters>
           {dataTest.map((chapters, i) => (
             <S.BoxChapters
-              onPress={() => navigation.navigate("verses", { chapters })}
+              onPress={() =>
+                navigation.navigate("verses", {
+                  chapters,
+                  book: route.params?.book,
+                })
+              }
               key={i}
               style={[shadow]}
             >

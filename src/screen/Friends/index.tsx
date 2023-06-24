@@ -1,5 +1,6 @@
 // modules and hooks
 import { useEffect, useRef, useState } from "react"
+import { SafeAreaView } from "react-native-safe-area-context"
 import { Dimensions, StatusBar, BackHandler } from "react-native"
 import { ScrollView } from "react-native-gesture-handler"
 import Animated, {
@@ -203,73 +204,75 @@ export default function Friends() {
   ]
 
   return (
-    <Content>
-      <StatusBar backgroundColor={colors.BACKGROUND} />
-      <HeaderSecond
-        page="Meus Amigos"
-        iconFunction={() => {
-          if (showSearch) {
-            closeSearch()
-          } else {
-            openSearch()
-          }
+    <SafeAreaView style={{ flex: 1 }}>
+      <Content>
+        <StatusBar backgroundColor={colors.BACKGROUND} />
+        <HeaderSecond
+          page="Meus Amigos"
+          iconFunction={() => {
+            if (showSearch) {
+              closeSearch()
+            } else {
+              openSearch()
+            }
 
-          setShowSearch(!showSearch)
-        }}
-        icon="search"
-        size={28}
-      />
-      <Animated.View style={[S.styleSheet.ContainerSearch, animatedSearch]}>
-        <S.Search
-          ref={inputSearch}
-          style={shadow}
-          placeholder="Pesquise por um amigo"
-          onChangeText={(e) => setSearch(e)}
-          value={search}
+            setShowSearch(!showSearch)
+          }}
+          icon="search"
+          size={28}
         />
-        <Feather
-          name="x"
-          size={30}
-          onPress={() => setSearch("")}
-          style={S.styleSheet.icon}
-          color={"#9c9c9c"}
-        />
-      </Animated.View>
-      <Animated.View style={[animatedContainerFriends]}>
-        <S.ContainerFriends>
-          <ScrollView
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-              paddingTop: 10,
-              paddingBottom: 50,
-              width: Dimensions.get("screen").width,
-            }}
-          >
-            {dataTest.map((friend, i) => (
-              <S.CardFriend key={i} style={shadow}>
-                <S.Picture>
-                  <Ionicons name="person" size={24} color="#fff" />
-                </S.Picture>
-                <S.ContainerMessage>
-                  <S.Name>{BigText(friend.name, 25)}</S.Name>
-                  <S.OldMessage>
-                    <S.Message>{BigText(friend.oldMessage, 40)}</S.Message>
-                  </S.OldMessage>
-                </S.ContainerMessage>
-                <S.Hour>{friend.hourOldMessage}</S.Hour>
-                <S.ContainerUnread>
-                  <S.Unread>{friend.qtdOldMessage}</S.Unread>
-                </S.ContainerUnread>
-              </S.CardFriend>
-            ))}
-          </ScrollView>
-        </S.ContainerFriends>
-      </Animated.View>
-      <Animated.View style={[animatedResultSearch]}>
-        <S.ResultSearch>
-          <S.Empty>Nenhuma alma encontrada</S.Empty>
-        </S.ResultSearch>
-      </Animated.View>
-    </Content>
+        <Animated.View style={[S.styleSheet.ContainerSearch, animatedSearch]}>
+          <S.Search
+            ref={inputSearch}
+            style={shadow}
+            placeholder="Pesquise por um amigo"
+            onChangeText={(e) => setSearch(e)}
+            value={search}
+          />
+          <Feather
+            name="x"
+            size={30}
+            onPress={() => setSearch("")}
+            style={S.styleSheet.icon}
+            color={"#9c9c9c"}
+          />
+        </Animated.View>
+        <Animated.View style={[animatedContainerFriends]}>
+          <S.ContainerFriends>
+            <ScrollView
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{
+                paddingTop: 10,
+                paddingBottom: 50,
+                width: Dimensions.get("screen").width,
+              }}
+            >
+              {dataTest.map((friend, i) => (
+                <S.CardFriend key={i} style={shadow}>
+                  <S.Picture>
+                    <Ionicons name="person" size={24} color="#fff" />
+                  </S.Picture>
+                  <S.ContainerMessage>
+                    <S.Name>{BigText(friend.name, 25)}</S.Name>
+                    <S.OldMessage>
+                      <S.Message>{BigText(friend.oldMessage, 40)}</S.Message>
+                    </S.OldMessage>
+                  </S.ContainerMessage>
+                  <S.Hour>{friend.hourOldMessage}</S.Hour>
+                  <S.ContainerUnread>
+                    <S.Unread>{friend.qtdOldMessage}</S.Unread>
+                  </S.ContainerUnread>
+                </S.CardFriend>
+              ))}
+            </ScrollView>
+          </S.ContainerFriends>
+        </Animated.View>
+        <Animated.View style={[animatedResultSearch]}>
+          <S.ResultSearch>
+            <S.Empty>Nenhuma alma encontrada</S.Empty>
+          </S.ResultSearch>
+        </Animated.View>
+      </Content>
+    </SafeAreaView>
   )
 }
